@@ -1,0 +1,6 @@
+#!/bin/sh
+ consul agent \
+ -node $HOSTNAME \
+ -bind=$(hostname -i) \
+ -data-dir /var/lib/consul \
+ -config-dir /etc/consul.d

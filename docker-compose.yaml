@@ -34,6 +34,16 @@ services:
       - data-server-3:/var/lib/consul
       - config-server-3:/etc/consul.d
 
+  client-1:
+    build:
+      context: clients
+      dockerfile: $PWD/Dockerfile
+    container_name: client-1
+    hostname: client-1
+    volumes:
+      - data-client-1:/var/lib/consul
+      - ./clients/config:/etc/consul.d
+
 volumes:
   data-server-1:
   config-server-1:
@@ -41,3 +51,4 @@ volumes:
   config-server-2:
   data-server-3:
   config-server-3:
+  data-client-1:
