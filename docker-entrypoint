@@ -1,0 +1,7 @@
+#!/bin/sh
+ consul agent --server \
+ -bootstrap-expect 3 \
+ -node $HOSTNAME \
+ -bind=$(hostname -i) \
+ -data-dir /var/lib/consul \
+ -config-dir /etc/consul.d

@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  server-1:
+    build: .
+    depends_on:
+      - server-2
+      - server-3
+    container_name: server-1
+    hostname: consul-1
+    volumes:
+      - data-server-1:/var/lib/consul
+      - config-server-1:/etc/consul.d
+
+  server-2:
+    build: .
+    container_name: server-2
+    hostname: consul-2
+    volumes:
+      - data-server-2:/var/lib/consul
+      - config-server-2:/etc/consul.d
+
+  server-3:
+    build: .
+    container_name: server-3
+    hostname: consul-3
+    volumes:
+      - data-server-3:/var/lib/consul
+      - config-server-3:/etc/consul.d
+
+volumes:
+  data-server-1:
+  config-server-1:
+  data-server-2:
+  config-server-2:
+  data-server-3:
+  config-server-3:
