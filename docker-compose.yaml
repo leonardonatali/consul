@@ -2,7 +2,9 @@ version: '3'
 
 services:
   server-1:
-    build: .
+    build:
+      context: servers
+      dockerfile: $PWD/Dockerfile
     depends_on:
       - server-2
       - server-3
@@ -13,7 +15,9 @@ services:
       - config-server-1:/etc/consul.d
 
   server-2:
-    build: .
+    build:
+      context: servers
+      dockerfile: $PWD/Dockerfile
     container_name: server-2
     hostname: consul-2
     volumes:
@@ -21,7 +25,9 @@ services:
       - config-server-2:/etc/consul.d
 
   server-3:
-    build: .
+    build:
+      context: servers
+      dockerfile: $PWD/Dockerfile
     container_name: server-3
     hostname: consul-3
     volumes:

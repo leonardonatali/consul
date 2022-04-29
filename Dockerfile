@@ -2,7 +2,7 @@ FROM consul:1.12.0
 
 WORKDIR /
 
-COPY docker-entrypoint .
+COPY /docker-entrypoint .
 
 RUN chmod +x ./docker-entrypoint
 
