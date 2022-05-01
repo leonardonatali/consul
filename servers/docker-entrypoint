@@ -3,5 +3,6 @@
  -bootstrap-expect 3 \
  -node $HOSTNAME \
  -bind=$(hostname -i) \
+ -retry-join=server-1 \
  -data-dir /var/lib/consul \
  -config-dir /etc/consul.d

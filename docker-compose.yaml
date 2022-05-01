@@ -5,12 +5,8 @@ services:
     build:
       context: servers
       dockerfile: $PWD/Dockerfile
-    depends_on:
-      - server-2
-      - server-3
-      - client-1
     container_name: server-1
-    hostname: consul-1
+    hostname: server-1
     volumes:
       - data-server-1:/var/lib/consul
       - config-server-1:/etc/consul.d
@@ -20,7 +16,8 @@ services:
       context: servers
       dockerfile: $PWD/Dockerfile
     container_name: server-2
-    hostname: consul-2
+    hostname: server-2
+    depends_on: [ server-1 ]
     volumes:
       - data-server-2:/var/lib/consul
       - config-server-2:/etc/consul.d
@@ -30,7 +27,8 @@ services:
       context: servers
       dockerfile: $PWD/Dockerfile
     container_name: server-3
-    hostname: consul-3
+    hostname: server-3
+    depends_on: [ server-1 ]
     volumes:
       - data-server-3:/var/lib/consul
       - config-server-3:/etc/consul.d
@@ -41,9 +39,21 @@ services:
       dockerfile: $PWD/Dockerfile
     container_name: client-1
     hostname: client-1
+    depends_on: [ server-1 ]
     volumes:
       - data-client-1:/var/lib/consul
-      - ./clients/config:/etc/consul.d
+      - ./clients/config/1:/etc/consul.d
+
+  client-2:
+    build:
+      context: clients
+      dockerfile: $PWD/Dockerfile
+    container_name: client-2
+    hostname: client-2
+    depends_on: [ server-1 ]
+    volumes:
+      - data-client-2:/var/lib/consul
+      - ./clients/config/2:/etc/consul.d
 
 volumes:
   data-server-1:
@@ -53,3 +63,4 @@ volumes:
   data-server-3:
   config-server-3:
   data-client-1:
+  data-client-2:
