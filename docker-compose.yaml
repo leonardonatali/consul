@@ -8,6 +8,7 @@ services:
     depends_on:
       - server-2
       - server-3
+      - client-1
     container_name: server-1
     hostname: consul-1
     volumes:

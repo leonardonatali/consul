@@ -6,4 +6,6 @@ COPY /docker-entrypoint .
 
 RUN chmod +x ./docker-entrypoint
 
+RUN apk -U add bind-tools
+
 ENTRYPOINT ["./docker-entrypoint"]
