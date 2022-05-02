@@ -2,7 +2,7 @@ default: up
 
 up:
 	@echo "\nstarting stack\n"
-	@docker-compose up -d --build
+	@ENCRYPT_KEY='SiAV+bxN3H24YqrsXRGIPjR5mbmRdwbl5eQtsGp8V5E=' docker-compose up -d --build
 	
 kill:
 	@echo "\nstopping all services\n"

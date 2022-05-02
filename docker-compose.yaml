@@ -7,6 +7,8 @@ services:
       dockerfile: $PWD/Dockerfile
     container_name: server-1
     hostname: server-1
+    environment:
+      - ENCRYPT_KEY=${ENCRYPT_KEY}
     volumes:
       - data-server-1:/var/lib/consul
       - config-server-1:/etc/consul.d
@@ -17,6 +19,8 @@ services:
       dockerfile: $PWD/Dockerfile
     container_name: server-2
     hostname: server-2
+    environment:
+      - ENCRYPT_KEY=${ENCRYPT_KEY}
     depends_on: [ server-1 ]
     volumes:
       - data-server-2:/var/lib/consul
@@ -28,6 +32,8 @@ services:
       dockerfile: $PWD/Dockerfile
     container_name: server-3
     hostname: server-3
+    environment:
+      - ENCRYPT_KEY=${ENCRYPT_KEY}
     depends_on: [ server-1 ]
     volumes:
       - data-server-3:/var/lib/consul
@@ -39,6 +45,8 @@ services:
       dockerfile: $PWD/Dockerfile
     container_name: client-1
     hostname: client-1
+    environment:
+      - ENCRYPT_KEY=${ENCRYPT_KEY}
     depends_on: [ server-1 ]
     volumes:
       - data-client-1:/var/lib/consul
@@ -50,6 +58,8 @@ services:
       dockerfile: $PWD/Dockerfile
     container_name: client-2
     hostname: client-2
+    environment:
+      - ENCRYPT_KEY=${ENCRYPT_KEY}
     depends_on: [ server-1 ]
     volumes:
       - data-client-2:/var/lib/consul

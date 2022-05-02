@@ -6,4 +6,5 @@
  -retry-join=server-2 \
  -retry-join=server-3 \
  -data-dir /var/lib/consul \
- -config-dir /etc/consul.d
+ -config-dir /etc/consul.d \
+ -encrypt $ENCRYPT_KEY
