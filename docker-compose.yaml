@@ -7,6 +7,8 @@ services:
       dockerfile: $PWD/Dockerfile
     container_name: server-1
     hostname: server-1
+    ports:
+      - 8500:8500
     environment:
       - ENCRYPT_KEY=${ENCRYPT_KEY}
     volumes:

@@ -6,4 +6,6 @@
  -retry-join=server-1 \
  -data-dir /var/lib/consul \
  -config-dir /etc/consul.d \
- -encrypt $ENCRYPT_KEY
+ -encrypt $ENCRYPT_KEY \
+ -ui \
+ -client 0.0.0.0
