@@ -5,6 +5,13 @@
         "port": 80,
         "tags": [
             "web"
-        ]
+        ],
+        "check": {
+            "id": "nginx",
+            "name": "nginx check",
+            "http": "http://localhost",
+            "interval": "10s",
+            "timeout": "1s"
+        }
     }
 }
